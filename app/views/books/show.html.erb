@@ -1,11 +1,13 @@
 <div class="container px-5 px-sm-0">
-  <% if @book_comment.errors.any? %>
-    <h3><%= @book_comment.errors.count %> errors prohibited this obj from being saved:</h3>
-    <ul>
-      <% @book_comment.errors.full_messages.each do |message| %>
+  <% if @error_comment.present? %>
+    <div id="error_explanation">
+      <h2><%= @error_comment.errors.count %>件のエラーが発生しました。</h2>
+      <ul>
+        <% @error_comment.errors.full_messages.each do |message| %>
         <li><%= message %></li>
-      <% end %>
-    </ul>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
   <div class="row">
     <div class="col-md-3">
@@ -60,7 +62,7 @@
               <% end %>
             </td>
             <td>
-              <%= link_to @book.title, book_path %>
+              <%= link_to @book.title, book_path(@book.id) %>
             </td>
             <td>
               <%= @book.body %>
