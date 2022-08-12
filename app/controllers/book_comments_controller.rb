@@ -10,7 +10,7 @@ class BookCommentsController < ApplicationController
       @error_comment = comment
       @book = Book.find(params[:book_id])
       @book_comment = BookComment.new
-      render 'books/show'
+      render '/books/show'
     end
   end
 
